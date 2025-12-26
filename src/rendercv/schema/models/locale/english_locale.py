@@ -41,6 +41,13 @@ class EnglishLocale(BaseModelWithoutExtraKeys):
             " `present`."
         ),
     )
+    cv_title_name: str = pydantic.Field(
+        default="{name}'s CV",
+        description=(
+            'Format string for CV title in markdown/HTML. Use {name} as placeholder. '
+            'For RTL languages like Arabic, use something like "السيرة الذاتية لـ {name}".'
+        ),
+    )
     # From https://web.library.yale.edu/cataloging/months
     month_abbreviations: Annotated[list[str], at.Len(min_length=12, max_length=12)] = (
         pydantic.Field(
